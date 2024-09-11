@@ -6,6 +6,7 @@ from functools import partial
 
 WINDOW_WIDTH = 1400
 WINDOW_HEIGHT = 950
+TUBE_HEIGHT = 250
 
 
 class BallSortGame:
@@ -25,6 +26,7 @@ class BallSortGame:
         self.calculate_tubes()
         self.balls = self.load_ball_images()
         self.create_game()
+        self.cur_ball_image_id = None
 
     def calculate_tubes(self):
         if self.n_colors <= 3:
@@ -70,18 +72,18 @@ class BallSortGame:
         # Create tubes and balls
         for i in range(self.total_tubes):
             tube_x = 100 + 83 * i
-            tube_y = 250
             tube_image = Image.open("utils/tube.png").resize((60, 200))
             tube_photo = ImageTk.PhotoImage(tube_image)
             self.image_refs.append(tube_photo)  # Keep a reference
-            tube_id = self.canvas.create_image(tube_x, tube_y, image=tube_photo)
+            tube_id = self.canvas.create_image(tube_x, TUBE_HEIGHT, image=tube_photo)
 
             # Bind tube clicks correctly using functools.partial to pass tube index
             self.canvas.tag_bind(tube_id, '<Button-1>', partial(self.on_tube_click, i))
 
-            if i < self.n_colors:  # Fill first n tubes with balls
-                self.tubes[i] = [ball_list.pop() for _ in range(4)]
-                self.draw_balls_in_tube(self.tubes[i], tube_x, tube_y, i)
+        for i in range(self.n_colors):
+            tube_x = 100 + 83 * i
+            self.tubes[i] = [ball_list.pop() for _ in range(4)]
+            self.draw_balls_in_tube(self.tubes[i], tube_x, TUBE_HEIGHT, i)
 
     def draw_balls_in_tube(self, tube_balls, tube_x, tube_y, tube_idx):
         """Draw the balls inside a specific tube."""
@@ -89,6 +91,12 @@ class BallSortGame:
             ball_image = self.balls[color]
             ball_id = self.canvas.create_image(tube_x, tube_y - 90 + ((4 - idx) * 40), image=ball_image)
             self.tube_ball_images[tube_idx].append(ball_id)  # Store the ball image ID
+
+    def is_goal_state(self):
+        for tube in self.tubes:
+            if not (len(tube) == 0 or (len(tube) == 4 and len(set(tube))==1)):
+                return False
+        return True
 
     def on_tube_click(self, tube_idx, event):
         """Handle tube click events."""
@@ -100,6 +108,7 @@ class BallSortGame:
                 # Move the ball outside the tube (y index to 200)
                 ball_image_id = self.tube_ball_images[tube_idx][-1]
                 self.canvas.coords(ball_image_id, 100 + (tube_idx * 83), 120)
+
         else:
             # Move the selected ball to the new tube
             if (len(self.tubes[tube_idx]) < 4 and
@@ -110,9 +119,15 @@ class BallSortGame:
                 self.tube_ball_images[tube_idx].append(ball_image_id)
                 # Animate the ball to its new position
                 self.canvas.coords(ball_image_id, 100 + (tube_idx * 83), 200)
-                self.canvas.after(200, lambda: self.canvas.coords(ball_image_id, 100 + (tube_idx * 83), 250 - 90 + ((4 - len(self.tubes[tube_idx])) * 40)))
+                self.canvas.after(200, lambda: self.canvas.coords(ball_image_id, 100 + (tube_idx * 83),
+                                                                  TUBE_HEIGHT - 90 + ((5 - len(self.tubes[tube_idx])) * 40)))
                 self.selected_ball = None  # Deselect the ball
                 self.selected_tube_idx = None
+                if self.is_goal_state():
+                    win_image = Image.open("utils/win.webp").resize((700, 450))
+                    self.win_image = ImageTk.PhotoImage(win_image)
+                    self.image_refs.append(self.win_image)  # Keep a reference
+                    self.canvas.create_image(350, 200, anchor=CENTER, image=self.win_image)
 
 
 def start_game():
