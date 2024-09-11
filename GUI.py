@@ -49,7 +49,7 @@ class BallSortGame:
         ball_colors = ['red', 'green', 'blue', 'purple', 'pink', 'yellow', 'orange', 'turquoise', 'grey']
         for color in ball_colors[:self.n_colors]:
             img_path = f"utils/balls/{color}.png"
-            ball_image = Image.open(img_path).resize((40, 40))  # Resize if necessary
+            ball_image = Image.open(img_path).resize((45, 45))  # Resize if necessary
             ball_photo = ImageTk.PhotoImage(ball_image)
             ball_images[color] = ball_photo
             self.image_refs.append(ball_photo)  # Keep a reference
@@ -82,7 +82,7 @@ class BallSortGame:
         # Create tubes and balls
         for i in range(self.total_tubes):
             tube_x = 100 + 83 * i
-            tube_image = Image.open("utils/tube.png").resize((60, 200))
+            tube_image = Image.open("utils/tube.png").resize((60, 210))
             tube_photo = ImageTk.PhotoImage(tube_image)
             self.image_refs.append(tube_photo)  # Keep a reference
             tube_id = self.canvas.create_image(tube_x, TUBE_HEIGHT, image=tube_photo)
@@ -99,7 +99,7 @@ class BallSortGame:
         """Draw the balls inside a specific tube."""
         for idx, color in enumerate(tube_balls):
             ball_image = self.balls[color]
-            ball_id = self.canvas.create_image(tube_x, tube_y - 90 + ((4 - idx) * 40), image=ball_image)
+            ball_id = self.canvas.create_image(tube_x, tube_y - 105 + ((4 - idx) * 45), image=ball_image)
             self.tube_ball_images[tube_idx].append(ball_id)  # Store the ball image ID
 
     def is_goal_state(self):
@@ -124,7 +124,7 @@ class BallSortGame:
                 ball_image_id = self.tube_ball_images[tube_idx][-1]
                 self.canvas.coords(ball_image_id, 100 + (tube_idx * 83), 200)
                 self.canvas.after(200, lambda: self.canvas.coords(ball_image_id, 100 + (tube_idx * 83),
-                                                                  TUBE_HEIGHT - 90 + ((5 - len(self.tubes[tube_idx])) * 40)))
+                                                                  TUBE_HEIGHT - 105 + ((5 - len(self.tubes[tube_idx])) * 45)))
                 self.selected_ball = None
                 self.selected_tube_idx = None
 
@@ -139,9 +139,9 @@ class BallSortGame:
                 self.tubes[tube_idx].append(self.selected_ball)  # Add to destination tube
                 self.tube_ball_images[tube_idx].append(ball_image_id)
                 # Animate the ball to its new position
-                self.canvas.coords(ball_image_id, 100 + (tube_idx * 83), 200)
+                self.canvas.coords(ball_image_id, 100 + (tube_idx * 83), 180)
                 self.canvas.after(200, lambda: self.canvas.coords(ball_image_id, 100 + (tube_idx * 83),
-                                                                  TUBE_HEIGHT - 90 + ((5 - len(self.tubes[tube_idx])) * 40)))
+                                                                  TUBE_HEIGHT - 105 + ((5 - len(self.tubes[tube_idx])) * 45)))
                 self.selected_ball = None
                 self.selected_tube_idx = None
 
