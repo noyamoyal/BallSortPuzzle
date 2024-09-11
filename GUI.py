@@ -10,12 +10,15 @@ TUBE_HEIGHT = 250
 
 
 class BallSortGame:
-    def __init__(self, root, n_colors):
+    def __init__(self, n_colors):
+        root = tk.Tk()
         root.geometry("700x450")
         self.root = root
         self.root.title("Ball Sort Game")
         self.canvas = tk.Canvas(self.root, width=1158, height=720)
         self.canvas.pack()
+
+        self.steps = 0  # Initialize step counter
         self.tubes = []
         self.tube_ball_images = []  # List to store ball image IDs for each tube
         self.image_refs = []  # Initialize list to keep track of image references
@@ -27,6 +30,7 @@ class BallSortGame:
         self.balls = self.load_ball_images()
         self.create_game()
         self.cur_ball_image_id = None
+        root.mainloop()
 
     def calculate_tubes(self):
         if self.n_colors <= 3:
@@ -58,6 +62,12 @@ class BallSortGame:
         self.bg_photo = ImageTk.PhotoImage(bg_image)
         self.image_refs.append(self.bg_photo)  # Keep a reference
         self.canvas.create_image(0, 0, anchor=CENTER, image=self.bg_photo)
+
+        self.step_label = self.canvas.create_text(290, 413, anchor="nw", font=("Courier bold", 25), fill="goldenrod")
+        self.canvas.itemconfig(self.step_label, text=f"Steps:{self.steps}")
+
+        # self.steps_label = tk.Label(self.root, text=, font=("Helvetica", 16), bg=self.root["bg"])
+        # self.steps_label.place(x=315, y=410)
 
         title = Image.open("utils/title.png").resize((230, 100))
         self.title = ImageTk.PhotoImage(title)
@@ -94,7 +104,7 @@ class BallSortGame:
 
     def is_goal_state(self):
         for tube in self.tubes:
-            if not (len(tube) == 0 or (len(tube) == 4 and len(set(tube))==1)):
+            if not (len(tube) == 0 or (len(tube) == 4 and len(set(tube)) == 1)):
                 return False
         return True
 
@@ -110,9 +120,20 @@ class BallSortGame:
                 self.canvas.coords(ball_image_id, 100 + (tube_idx * 83), 120)
 
         else:
+            if tube_idx == self.selected_tube_idx:
+                ball_image_id = self.tube_ball_images[tube_idx][-1]
+                self.canvas.coords(ball_image_id, 100 + (tube_idx * 83), 200)
+                self.canvas.after(200, lambda: self.canvas.coords(ball_image_id, 100 + (tube_idx * 83),
+                                                                  TUBE_HEIGHT - 90 + ((5 - len(self.tubes[tube_idx])) * 40)))
+                self.selected_ball = None
+                self.selected_tube_idx = None
+
             # Move the selected ball to the new tube
-            if (len(self.tubes[tube_idx]) < 4 and
+            elif (len(self.tubes[tube_idx]) < 4 and
                     (len(self.tubes[tube_idx]) == 0 or self.tubes[tube_idx][-1] == self.selected_ball)):
+                # Ensure source and destination are not the same
+                self.steps += 1  # Increment steps only if src != dst
+                self.canvas.itemconfig(self.step_label, text=f"Steps:{self.steps}")  # Update label
                 self.tubes[self.selected_tube_idx].pop()  # Remove from source tube
                 ball_image_id = self.tube_ball_images[self.selected_tube_idx].pop()
                 self.tubes[tube_idx].append(self.selected_ball)  # Add to destination tube
@@ -121,21 +142,15 @@ class BallSortGame:
                 self.canvas.coords(ball_image_id, 100 + (tube_idx * 83), 200)
                 self.canvas.after(200, lambda: self.canvas.coords(ball_image_id, 100 + (tube_idx * 83),
                                                                   TUBE_HEIGHT - 90 + ((5 - len(self.tubes[tube_idx])) * 40)))
-                self.selected_ball = None  # Deselect the ball
+                self.selected_ball = None
                 self.selected_tube_idx = None
-                if self.is_goal_state():
-                    win_image = Image.open("utils/win.webp").resize((700, 450))
-                    self.win_image = ImageTk.PhotoImage(win_image)
-                    self.image_refs.append(self.win_image)  # Keep a reference
-                    self.canvas.create_image(350, 200, anchor=CENTER, image=self.win_image)
 
-
-def start_game():
-    root = tk.Tk()
-    n_colors = 5  # You can modify this or set it via API
-    game = BallSortGame(root, n_colors)
-    root.mainloop()
+            if self.is_goal_state():
+                win_image = Image.open("utils/win.webp").resize((700, 450))
+                self.win_image = ImageTk.PhotoImage(win_image)
+                self.image_refs.append(self.win_image)  # Keep a reference
+                self.canvas.create_image(350, 200, anchor=CENTER, image=self.win_image)
 
 
 if __name__ == "__main__":
-    start_game()
+    BallSortGame(5)
