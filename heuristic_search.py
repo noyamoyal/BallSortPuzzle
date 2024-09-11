@@ -1,5 +1,15 @@
 import util
+# import heapq
 
+# class QueueNode:
+#
+#     def __init__(self, score, state, path):
+#         self.score = score
+#         self.state = state
+#         self.path = path
+#
+#     def __lt__(self, other):
+#         return self.score < other.score
 
 def a_star_search(problem, heuristic):
     """
@@ -8,7 +18,7 @@ def a_star_search(problem, heuristic):
 
     queue = util.PriorityQueue()
     # Inserting starting point
-    queue.push(problem.get_start_state(), heuristic(problem.get_start_state(), problem))
+    queue.push(problem.get_start_state(), heuristic(problem.get_start_state()))
     # Dictionary which holds the cost of the minimum cost from the beggining up to this point.
     reached_nodes = {problem.get_start_state(): 0}
     paths_actions = {}
@@ -28,16 +38,16 @@ def a_star_search(problem, heuristic):
             break
         # Loop over node neighbors and add them to queue.
         for neighbor in problem.get_successors(node):
-
             if neighbor[0] not in reached_nodes:
                 g_n = cost + neighbor[2]
-                f_n = g_n + heuristic(neighbor[0], problem)
+                f_n = g_n + heuristic(neighbor[0])
                 # Adding the cose to get to that neighbor from node.
                 reached_nodes[neighbor[0]] = f_n
                 # Adding the action from node to get to neighbor
                 paths_actions[neighbor[0]] = (node, neighbor[1])
                 # Add to priority queue the neighbor and the total cost to it from beginning.
                 queue.push(neighbor[0], f_n)
+
     # Fetching path using our dictionary
     while goal != problem.get_start_state():
         # Take the action from last goal.
@@ -47,6 +57,30 @@ def a_star_search(problem, heuristic):
 
     path_to_goal.reverse()
     return path_to_goal
+
+    # start_state = problem.get_start_state()
+    # frontier = []
+    # heapq.heappush(frontier, QueueNode(0, start_state, []))
+    # visited = set()
+    # while frontier:
+    #     cur_queue_node = heapq.heappop(frontier)
+    #     cur_state = cur_queue_node.state
+    #     cur_path = cur_queue_node.path
+    #     if cur_state in visited:
+    #         continue
+    #     visited.add(cur_state)
+    #
+    # if problem.is_goal_state(cur_state):
+    #     return cur_path
+    #
+    # for successor, action, step_cost in problem.get_successors(cur_state):
+    #     if successor in visited:
+    #         continue
+    #
+    #     new_path = cur_path + [action]
+    #     heapq.heappush(frontier, QueueNode(problem.get_cost_of_actions(new_path) +
+    #                                        heuristic(cur_state, problem), successor, new_path))
+    # return None
 
 
 def heuristic_function(board):

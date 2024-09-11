@@ -19,12 +19,12 @@ class BallSortProblem:
 
         Returns True if and only if the state is a valid goal state
         """
-        for tube in self.tubes:
+        for tube in state:
             if not (len(tube) == 0 or (len(tube) == 4 and len(set(tube)) == 1)):
                 return False
         return True
 
-    def move_between_tubes(self, tube1, tube2, t1_idx, t2_idx):
+    def move_between_tubes(self, state, tube1, tube2, t1_idx, t2_idx):
         """
         Thjis function try to move the top ball from t1 to t2 and return the
         :param tube1:
@@ -33,7 +33,7 @@ class BallSortProblem:
         """
         if len(tube2) == 4 or (len(tube2) and tube1[-1] != tube2[-1]):
             return None
-        post_tubes = copy.deepcopy(self.tubes)
+        post_tubes = copy.deepcopy(state)
         post_tubes[t2_idx].append(post_tubes[t1_idx].pop())
         return post_tubes
 
@@ -48,12 +48,12 @@ class BallSortProblem:
         cost of expanding to that successor
         """
         successors = []
-        for t1_idx, tube1 in enumerate(self.tubes):
+        for t1_idx, tube1 in enumerate(state):
             if len(tube1) == 0:  # Skip empty tubes
                 continue
-            for t2_idx, tube2 in enumerate(self.tubes):
+            for t2_idx, tube2 in enumerate(state):
                 if t1_idx != t2_idx:
-                    suc = self.move_between_tubes(tube1, tube2, t1_idx, t2_idx)
+                    suc = self.move_between_tubes(state, tube1, tube2, t1_idx, t2_idx)
                     if suc is not None:
                         successors.append((suc, f"{t1_idx}_to_{t2_idx}", 1))
         self.expanded += 1

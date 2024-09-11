@@ -25,9 +25,6 @@ class BallSortGui:
         self.image_refs = []  # Initialize list to keep track of image references
         self.load_ball_images()
         self.create_game(tubes)
-        # self.total_tubes = 0
-        # self.selected_ball = None  # To track selected ball and its tube
-        # self.selected_tube_idx = None
 
     def load_ball_images(self):
         """Load all ball images from the 'balls' folder."""
@@ -107,3 +104,5 @@ class BallSortGui:
         self.image_refs.append(self.win_image)  # Keep a reference
         self.canvas.create_image(350, 200, anchor=CENTER, image=self.win_image)
 
+    def update_display(self):
+        self.canvas.pack()

@@ -1,9 +1,35 @@
 import random
 import GUI
+import heuristic_search
 from functools import partial
+from BallSortProblem import *
 
 COLORS = ['red', 'green', 'blue', 'purple', 'pink', 'yellow', 'orange', 'turquoise', 'grey']
 HUMAN = "human"
+AI = "AI"
+
+class Tubes(list):
+
+    def __init__(self, tubes):
+        super().__init__(tubes)
+
+    def __eq__(self, other):
+        if len(self) != len(other):
+            return False
+        for i in range(len(self)):
+            if len(self[i]) != len(other[i]):
+                return False
+            for j in range(len(self[i])):
+                if self[i][j] != other[i][j]:
+                    return False
+        return True
+
+    def __hash__(self):
+        string = ""
+        for tube in self:
+            string += "_" + '.'.join(str(item) for item in tube)
+        return hash(string)
+
 
 class BallSortGame:
 
@@ -13,13 +39,25 @@ class BallSortGame:
         self.steps = 0
         self.tubes = []
         self.init_tubes()
+        self.tubes = Tubes(self.tubes)
         self.init_balls_in_tubes()
         self.gui = GUI.BallSortGui(n_colors, self.tubes)
-        if agent == HUMAN:
-            self.set_user_events()
         self.selected_ball = None
         self.selected_tube_idx = None
+        if agent == HUMAN:
+            self.set_user_events()
+        else:
+            problem = BallSortProblem(self.tubes)
+            actions = heuristic_search.a_star_search(problem, heuristic_search.heuristic_function)
+            for action in actions:
+                self.do_action(action)
+
         self.gui.root.mainloop()
+    #
+    # def main_loop(self):
+    #     while not self.is_goal_state():
+    #         self.gui.update_display()
+    #     self.gui.win()
 
     def init_tubes(self):
         if self.n_colors <= 3:
@@ -49,6 +87,15 @@ class BallSortGame:
         for i, tube in enumerate(tube_ids):
             self.gui.get_canvas().tag_bind(tube, '<Button-1>', partial(self.on_tube_click, i))
 
+    def get_steps(self):
+        return self.steps
+
+    def do_action(self, action):
+        src_idx = int(action[0])
+        dst_idx = int(action[-1])
+        self.on_tube_click(src_idx, None)
+        self.on_tube_click(dst_idx, None)
+
     def on_tube_click(self, tube_idx, event):
         if self.selected_ball is None:
             # Select the top ball from the clicked tube
@@ -73,11 +120,8 @@ class BallSortGame:
                 self.gui.move_ball(self.selected_tube_idx, tube_idx, len(self.tubes[tube_idx]), self.selected_ball[1])
                 self.selected_ball = None
                 self.selected_tube_idx = None
-
-    def main_loop(self):
-        while not self.is_goal_state():
-            continue
-        self.gui.win()
+                if self.is_goal_state():
+                    self.gui.win()
 
 if __name__ == '__main__':
     game = BallSortGame()
