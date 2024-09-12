@@ -40,6 +40,7 @@ class BallSortGui:
 
     def create_game(self, tubes):
         """Create the game layout, placing tubes and balls on the canvas."""
+
         # Set background image
         bg_image = Image.open("utils/background.jpg").resize((WINDOW_WIDTH, WINDOW_HEIGHT))
         self.bg_photo = ImageTk.PhotoImage(bg_image)
@@ -95,6 +96,7 @@ class BallSortGui:
         self.canvas.coords(ball_id, 100 + (dst_idx * 83), 170)
         self.canvas.after(200, lambda: self.canvas.coords(ball_id, 100 + (dst_idx * 83),
                                                           TUBE_HEIGHT - 105 + ((5 - dst_tube_size) * 45)))
+
     def update_steps_display(self, steps):
         self.canvas.itemconfig(self.step_label, text=f"Steps:{steps}")
 
