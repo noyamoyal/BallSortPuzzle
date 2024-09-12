@@ -30,6 +30,7 @@ def a_star_search(problem, heuristic):
 
         # Extracting current point and evaluate its cost from start.
         node = queue.pop()
+        # print(problem.expanded)
         cost = reached_nodes[node]
 
         # If got to the goal point break.
@@ -58,6 +59,7 @@ def a_star_search(problem, heuristic):
     path_to_goal.reverse()
     return path_to_goal
 
+    # TODO delete following code
     # start_state = problem.get_start_state()
     # frontier = []
     # heapq.heappush(frontier, QueueNode(0, start_state, []))
@@ -84,7 +86,7 @@ def a_star_search(problem, heuristic):
 
 
 def heuristic_function(board):
-    return misplaced_balls(board)
+    return blocking_balls(board)
 
 
 def misplaced_balls(board):

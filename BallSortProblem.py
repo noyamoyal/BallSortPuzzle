@@ -26,7 +26,7 @@ class BallSortProblem:
 
     def move_between_tubes(self, state, tube1, tube2, t1_idx, t2_idx):
         """
-        Thjis function try to move the top ball from t1 to t2 and return the
+        Thjis function try to move the top ball from t1 to t2 and return the new state
         :param tube1:
         :param tube2:
         :return:
@@ -69,8 +69,3 @@ class BallSortProblem:
         return len(actions)
 
 
-if __name__ == '__main__':
-    # game = GUI.BallSortGame(3)
-    tubes = [[1, 2, 4], [1, 2, 3], [1, 2, 4], []]
-    prob = BallSortProblem(tubes)
-    suc = prob.get_successors(None)
