@@ -1,5 +1,5 @@
-from action import Action
-from proposition import Proposition
+from GraphPlanning.action import Action
+from GraphPlanning.proposition import Proposition
 
 
 class PgParser:

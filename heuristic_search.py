@@ -1,4 +1,4 @@
-import util
+from PriorityQueue import PriorityQueue
 # import heapq
 
 # class QueueNode:
@@ -16,7 +16,7 @@ def a_star_search(problem, heuristic):
     Search the node that has the lowest combined cost and heuristic first.
     """
 
-    queue = util.PriorityQueue()
+    queue = PriorityQueue()
     # Inserting starting point
     queue.push(problem.get_start_state(), heuristic(problem.get_start_state()))
     # Dictionary which holds the cost of the minimum cost from the beggining up to this point.

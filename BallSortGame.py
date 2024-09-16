@@ -88,6 +88,9 @@ class BallSortGame:
                 return False
         return True
 
+    def get_colors(self):
+        return COLORS[:self.n_colors]
+
     def set_user_events(self):
         """
         Function sets click listener events of user agent game using tk tag binding.
@@ -109,8 +112,8 @@ class BallSortGame:
         """
         src_idx = int(action[0])
         dst_idx = int(action[-1])
-        self.on_tube_click(src_idx, None)
-        self.on_tube_click(dst_idx, None)
+        self.on_tube_click(src_idx - 1, None)
+        self.on_tube_click(dst_idx - 1, None)
 
     def on_tube_click(self, tube_idx, event):
         # Case whe choose ball to move

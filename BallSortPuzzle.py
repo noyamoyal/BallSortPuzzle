@@ -1,6 +1,10 @@
 import sys
 
 from BallSortGame import *
+from GraphPlanning.domain_and_problem_factory import create_graph_plan_files
+from GraphPlanning.planning_problem import PlanningProblem, level_sum
+from GraphPlanning.search import *
+
 # from GraphPlanning.domain_and_problem_factory import *
 # from GraphPlanning.planning_problem import *
 
@@ -19,18 +23,17 @@ def play_a_star_search(game, problem):
 
 
 def play_graph_planning(game):
-    create_problem_file(game.get_tubes())
-    create_domain_file(game.get_tubes())
-    domain = 'GraphPlanning/domain.txt'
-    problem = 'GraphPlanning/problem.txt'
+    domain, problem = create_graph_plan_files(game.get_tubes(), game.get_colors())
     prob = PlanningProblem(domain, problem)
     start = time.perf_counter()
 
-    plan = a_star_search(prob, heuristic)
+    plan = a_star_search(prob, level_sum)
     elapsed = time.perf_counter() - start
     if plan is not None:
-        print("Plan found with %d actions in %.2f seconds" % (len(plan), elapsed))
-        print([plane_.name for plane_ in plan])
+        custom_plan = [f'{p.name[-10]}_to_{p.name[-3]}' for p in plan if p.name.split('_')[1] != "finished"]
+        game.game_runner(actions=custom_plan)
+        print("Plan found with %d actions in %.2f seconds" % (len(custom_plan), elapsed))
+        print([plane_ for plane_ in custom_plan])
     else:
         print("Could not find a plan in %.2f seconds" % elapsed)
     print("Search nodes expanded: %d" % prob.expanded)
@@ -39,7 +42,7 @@ def play_graph_planning(game):
 
 def main():
     n_colors, agent, solve_plan = check_input_validity()
-    n_games = 5
+    n_games = 1
     expands, steps = 0, 0
 
     for i in range(n_games):
@@ -56,7 +59,7 @@ def main():
             game.game_runner()
         if solve_plan:
             with open("results/summary.txt", 'a') as file:
-                file.write(f"\nfor agent :AI\n"
+                file.write(f"\nfor agent : {solve_plan}\n"
                            f"with n_colors:{n_colors}\n"
                            f"num of games : {n_games}\n"
                            f"average Expanded nodes: %d, average steps: %d\nusing:\n"

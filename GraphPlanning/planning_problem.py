@@ -1,15 +1,15 @@
 import math
 
-from util import Pair
+# from util import Pair
 import copy
-from proposition_layer import PropositionLayer
-from plan_graph_level import PlanGraphLevel
-from pgparser import PgParser
-from action import Action
+from GraphPlanning.proposition_layer import PropositionLayer
+from GraphPlanning.plan_graph_level import PlanGraphLevel
+from GraphPlanning.pgparser import PgParser
+from GraphPlanning.action import Action
 
 try:
-    from search import SearchProblem
-    from search import a_star_search
+    from GraphPlanning.search import SearchProblem
+    from GraphPlanning.search import a_star_search
 
 except:
     try:

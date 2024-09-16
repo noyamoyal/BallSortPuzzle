@@ -55,7 +55,7 @@ class BallSortProblem:
                 if t1_idx != t2_idx:
                     suc = self.move_between_tubes(state, tube1, tube2, t1_idx, t2_idx)
                     if suc is not None:
-                        successors.append((suc, f"{t1_idx}_to_{t2_idx}", 1))
+                        successors.append((suc, f"{t1_idx+1}_to_{t2_idx+1}", 1))
         self.expanded += 1
         return successors
 

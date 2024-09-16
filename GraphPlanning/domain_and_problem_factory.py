@@ -5,12 +5,19 @@ import sys
 def write_propositions(domain_file, colors, n_tubes):
     domain_file.write(f'Propositions:\n')
     balls_location = [f'{color}_{i}_{j}' for color in colors for i in range(1, n_tubes + 1) for j in range(1, 5)]
-    tube_has = [f'{i}_has_{j}' for i in range(1, n_tubes + 1) for j in range(1, 5)]
-    domain_file.write(" ".join(balls_location) + " ".join(tube_has))
+    tube_has = [f'{i}_has_{j}' for i in range(1, n_tubes + 1) for j in range(0, 5)]
+    finished_tubes = [f'{i}_finished' for i in range(1, n_tubes + 1)]
+    domain_file.write(" ".join(balls_location) + " " + " ".join(tube_has) + " " + " ".join(finished_tubes))
 
 def write_actions(domain_file, colors, n_tubes):
     domain_file.write(f"Actions:\n")
     # TODO remove finished from full tube
+    create_general_action(colors, domain_file, n_tubes)
+    create_full_tube_action(colors, domain_file, n_tubes)
+    create_empty_tube_action(domain_file, n_tubes)
+
+
+def create_general_action(colors, domain_file, n_tubes):
     for color in colors:
         for i in range(1, n_tubes + 1):
             for j in range(1, 5):
@@ -18,38 +25,41 @@ def write_actions(domain_file, colors, n_tubes):
                     if i == k: continue
                     for l in range(1, 5):
                         name = f'Move_{color}_from_{i}_{j}_to_{k}_{l}'
-                        pre = [f'{color}_{i}_{j}', f'{i}_has_{j}', f'{k}_has_{l-1}']
-                        add = [f'{color}_{k}_{l}', f'{i}_has_{j-1}', f'{k}_has_{l}']
-                        delete = [f'{color}_{i}_{j}', f'{i}_has_{j}', f'{k}_has_{l-1}']
-                        if l!=1:
-                            pre.append(f'{color}_{k}_{l-1}')
+                        pre = [f'{color}_{i}_{j}', f'{i}_has_{j}', f'{k}_has_{l - 1}']
+                        add = [f'{color}_{k}_{l}', f'{i}_has_{j - 1}', f'{k}_has_{l}']
+                        delete = [f'{color}_{i}_{j}', f'{i}_has_{j}', f'{k}_has_{l - 1}']
+                        if l != 1:
+                            pre.append(f'{color}_{k}_{l - 1}')
                         else:
                             delete.append(f'{k}_finished')
-                        domain_file.write(f"Name: {name}\n")
-                        domain_file.write("pre: " + " ".join(pre) + "\n")
-                        domain_file.write("add: " + " ".join(add) + "\n")
-                        domain_file.write("delete: " + " ".join(delete) + "\n")
+                        write_to_domain_file(add, delete, domain_file, name, pre)
 
-        for color in colors:
-            for i in range(1, n_tubes + 1):
-                name = f'{i}_finished_with_{color}'
-                pre = [f'{color}_{i}_{j}' for j in range(1, 5)]
-                add = [f'{i}_finished']
-                delete = []
-                domain_file.write(f"Name: {name}\n")
-                domain_file.write("pre: " + " ".join(pre) + "\n")
-                domain_file.write("add: " + " ".join(add) + "\n")
-                domain_file.write("delete: " + " ".join(delete) + "\n")
 
+def create_full_tube_action(colors, domain_file, n_tubes):
+    for color in colors:
         for i in range(1, n_tubes + 1):
-            name = f'{i}_finished_with_empty'
-            pre = [f'{i}_has_0']
+            name = f'{i}_finished_with_{color}'
+            pre = [f'{color}_{i}_{j}' for j in range(1, 5)]
             add = [f'{i}_finished']
             delete = []
-            domain_file.write(f"Name: {name}\n")
-            domain_file.write("pre: " + " ".join(pre) + "\n")
-            domain_file.write("add: " + " ".join(add) + "\n")
-            domain_file.write("delete: " + " ".join(delete) + "\n")
+            write_to_domain_file(add, delete, domain_file, name, pre)
+
+
+def create_empty_tube_action(domain_file, n_tubes):
+    for i in range(1, n_tubes + 1):
+        name = f'{i}_finished_with_empty'
+        pre = [f'{i}_has_0']
+        add = [f'{i}_finished']
+        delete = []
+        write_to_domain_file(add, delete, domain_file, name, pre)
+
+
+def write_to_domain_file(add, delete, domain_file, name, pre):
+    domain_file.write(f"Name: {name}\n")
+    domain_file.write("pre: " + " ".join(pre) + "\n")
+    domain_file.write("add: " + " ".join(add) + "\n")
+    domain_file.write("delete: " + " ".join(delete) + "\n")
+
 
 def create_domain_file(domain_file_name, colors, n_tubes):
     domain_file = open(domain_file_name, 'w')  # use domain_file.write(str) to write to domain_file
@@ -59,48 +69,18 @@ def create_domain_file(domain_file_name, colors, n_tubes):
     domain_file.close()
 
 
-def write_state(problem_file, disks, pegs, is_initial_state):
-    if is_initial_state:
-        problem_file.write(f'Initial state: ')
-        clear_pegs = ['c_' + p for p in pegs[1:]]
-    else:
-        problem_file.write(f'Goal state: ')
-    disks_on_disks = []
-    for d1, d2 in itertools.combinations(disks, r=2):
-        if int(d1.split("_")[1]) == int(d2.split("_")[1]) - 1:
-            disks_on_disks.append(f'{d1}-ON-{d2}')
-    problem_file.write(" ".join(disks_on_disks) + " ")
-    if is_initial_state:
-        problem_file.write(" ".join(clear_pegs) + " ")
-        problem_file.write(f"d_{len(disks) - 1}-ON-p_0")
-        problem_file.write(" c_d_0")
-    else:
-        problem_file.write(f"d_{len(disks) - 1}-ON-p_{len(pegs) - 1}")
-
-
-def create_problem_file(problem_file_name_, n_, m_):
-    disks = ['d_%s' % i for i in list(range(n_))]  # [d_0,..., d_(n_ - 1)]
-    pegs = ['p_%s' % i for i in list(range(m_))]  # [p_0,..., p_(m_ - 1)]
-    problem_file = open(problem_file_name_, 'w')  # use problem_file.write(str) to write to problem_file
-    write_state(problem_file, disks, pegs, True)
-    problem_file.write("\n")
-    write_state(problem_file, disks, pegs, False)
+def create_problem_file(problem_file_name_, tubes):
+    problem_file = open(problem_file_name_, 'w')
+    initial_balls_state = [f'{tubes[i][j]}_{i+1}_{j+1}' for i in range(len(tubes)) for j in range(len(tubes[i]))]
+    initial_tubes_state = [f'{i+1}_has_{len(tubes[i])}' for i in range(len(tubes))]
+    goal_state = [f'{i}_finished' for i in range(1, len(tubes)+1)]
+    problem_file.write('Initial state: ' + " ".join(initial_balls_state) + " " + " ".join(initial_tubes_state) + "\n")
+    problem_file.write('Goal state: ' + " ".join(goal_state) + "\n")
     problem_file.close()
 
-
-# if __name__ == '__main__':
-#     if len(sys.argv) != 3:
-#         print('Usage: domain_and_problem_factory.py n m')
-#         sys.exit(2)
-#
-#     n = int(float(sys.argv[1]))  # number of disks
-#     m = int(float(sys.argv[2]))  # number of pegs
-#
-#     domain_file_name = 'hanoi_%s_%s_domain.txt' % (n, m)
-#     problem_file_name = 'hanoi_%s_%s_problem.txt' % (n, m)
-#
-#     create_domain_file(domain_file_name, n, m)
-#     create_problem_file(problem_file_name, n, m)
-
-if __name__ == '__main__':
-    write_propositions("", ["red", "green", "blue"], 4)
+def create_graph_plan_files(tubes, colors):
+    domain_file_name = f'ball_sort_puzzle_{len(colors)}_domain.txt'
+    problem_file_name = f'ball_sort_puzzle_{len(colors)}_problem.txt'
+    create_domain_file(domain_file_name, colors, len(tubes))
+    create_problem_file(problem_file_name, tubes)
+    return domain_file_name, problem_file_name
