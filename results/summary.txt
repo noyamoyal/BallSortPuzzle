@@ -150,3 +150,131 @@ num of games : 1
 average Expanded nodes: 433, average steps: 19
 using: level sum
 ######
+
+for agent : planning
+with n_colors:4
+num of games : 3
+average Expanded nodes: 38, average steps: 5
+using:
+######
+
+for agent : planning
+with n_colors:4
+num of games : 3
+average Expanded nodes: 75, average steps: 9
+using:
+######
+
+for agent : planning
+with n_colors:4
+num of games : 3
+average Expanded nodes: 132, average steps: 14
+using:
+######
+
+for agent : planning
+with n_colors:4
+num of games : 3
+average Expanded nodes: 96, average steps: 14
+using:
+######
+
+############## NEW START ############
+
+for agent : planning
+with n_colors : 4
+num of games : 3
+average Expanded nodes : 175, average steps : 13
+using :
+######
+
+for agent : search
+with n_colors : 4
+num of games : 3
+average Expanded nodes : 2003, average steps : 14
+using :
+######
+
+for agent : planning
+with n_colors : 6
+num of games : 3
+average Expanded nodes : 989, average steps : 24
+using :
+######
+
+for agent : planning
+with n_colors : 2
+num of games : 1
+average Expanded nodes : 2, average steps : 0
+using :
+######
+
+for agent : planning
+with n_colors : 2
+num of games : 1
+average Expanded nodes : 2, average steps : 0
+using :
+######
+
+for agent : planning
+with n_colors : 2
+num of games : 1
+average Expanded nodes : 10, average steps : 6
+using :
+######
+
+for agent : planning
+with n_colors : 5
+num of games : 1
+average Expanded nodes : 366, average steps : 22
+using :
+######
+
+for agent : planning
+with n_colors : 4
+num of games : 1
+average Expanded nodes : 184, average steps : 13
+using :
+######
+
+for agent : planning
+with n_colors : 4
+num of games : 1
+average Expanded nodes : 4, average steps : 0
+using :
+######
+
+for agent : planning
+with n_colors : 4
+num of games : 1
+average Expanded nodes : 176, average steps : 3
+using :
+######
+
+for agent : planning
+with n_colors : 4
+num of games : 1
+average Expanded nodes : 137, average steps : 14
+using :
+######
+
+for agent : planning
+with n_colors : 6
+num of games : 1
+average Expanded nodes : 492, average steps : 20
+using :
+######
+
+for agent : planning
+with n_colors : 5
+num of games : 1
+average Expanded nodes : 286, average steps : 19
+using :
+######
+
+for agent : planning
+with n_colors : 7
+num of games : 1
+average Expanded nodes : 1840, average steps : 32  in 778.12 seconds
+using :
+######

@@ -27,6 +27,7 @@ class PlanningProblem:
         """
         p = PgParser(domain_file, problem_file)
         self.actions, self.propositions = p.parse_actions_and_propositions()
+        self.actions_dict = {action.name: action for action in self.actions}
         # list of all the actions and list of all the propositions
 
         initial_state, goal = p.parse_problem()
@@ -64,17 +65,38 @@ class PlanningProblem:
 
         Note that a state *must* be hashable!! Therefore, you might want to represent a state as a frozenset
         """
+        colors = set()
+        top_idx_for_tube = {}
+        ball_ind = {}
+        for s in state:
+            segments = s.name.split('_')
+            if len(segments) != 3: continue
+            if segments[1] == 'has':
+                top_idx_for_tube[int(segments[0])] = int(segments[2])
+            else:
+                ball_ind[(int(segments[1]), int(segments[2]))] = segments[0]
+                colors.add(segments[0])
         self.expanded += 1
         successor_list = []
-        for action in self.actions:
+        # actions = [f'Move_{tube[len(tube) - 1]}_from_{i}_{j}_to_{k}_{l}' for tube in state]
+        actions = [f'Move_{color}_from_{i}_{top_idx_for_tube[i]}_to_{k}_{top_idx_for_tube[k] + 1}' for color in colors
+                   for i in range(1, len(top_idx_for_tube) + 1) for k in range(1, len(top_idx_for_tube) + 1)
+                   if i != k and top_idx_for_tube[i] > 0 and top_idx_for_tube[k] < 4
+                   and ball_ind[(i, top_idx_for_tube[i])] == color]
+        noop_actions_full = [f'{i}_finished_with_{color}' for color in colors for i in range(1, len(top_idx_for_tube) + 1)]
+        noop_actions_empty = [f'{i}_finished_with_empty' for i in range(1, len(top_idx_for_tube) + 1)]
+        actions += noop_actions_full + noop_actions_empty
 
-            if not action.is_noop() and action.all_preconds_in_list(state):
-                successor = list(state) + [prop for prop in action.get_add() if prop not in state]
+        for action in actions:
+            action_obj = self.actions_dict[action]
+            if not action_obj.is_noop() and action_obj.all_preconds_in_list(state):
+                successor = list(state) + [prop for prop in action_obj.get_add() if prop not in state]
 
-                successor = [prop for prop in successor if prop not in action.get_delete()]
+                successor = [prop for prop in successor if prop not in action_obj.get_delete()]
                 # successor_prop = state_prop_lst + action.get_add()
                 successor = frozenset(successor)
-                successor_list.append((successor, action, 1))
+                successor_list.append((successor, action_obj, 1))
+
         return successor_list
 
     @staticmethod

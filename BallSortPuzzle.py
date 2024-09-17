@@ -2,7 +2,7 @@ import sys
 
 from BallSortGame import *
 from GraphPlanning.domain_and_problem_factory import create_graph_plan_files
-from GraphPlanning.planning_problem import PlanningProblem, level_sum
+from GraphPlanning.planning_problem import PlanningProblem, level_sum, max_level
 from GraphPlanning.search import *
 
 # from GraphPlanning.domain_and_problem_factory import *
@@ -30,6 +30,7 @@ def play_graph_planning(game):
     plan = a_star_search(prob, level_sum)
     elapsed = time.perf_counter() - start
     if plan is not None:
+
         custom_plan = [f'{p.name[-10]}_to_{p.name[-3]}' for p in plan if p.name.split('_')[1] != "finished"]
         game.game_runner(actions=custom_plan)
         print("Plan found with %d actions in %.2f seconds" % (len(custom_plan), elapsed))
@@ -57,13 +58,13 @@ def main():
             steps += cur_steps
         else:
             game.game_runner()
-        if solve_plan:
-            with open("results/summary.txt", 'a') as file:
-                file.write(f"\nfor agent : {solve_plan}\n"
-                           f"with n_colors:{n_colors}\n"
-                           f"num of games : {n_games}\n"
-                           f"average Expanded nodes: %d, average steps: %d\nusing:\n"
-                           f"######\n" % (expands / n_games, steps / n_games))
+    if solve_plan:
+        with open("results/summary.txt", 'a') as file:
+            file.write(f"\nfor agent : {solve_plan}\n"
+                       f"with n_colors : {n_colors}\n"
+                       f"num of games : {n_games}\n"
+                       f"average Expanded nodes : %d, average steps : %d\nusing :\n"
+                       f"######\n" % (expands / n_games, steps / n_games))
 
 
 def check_input_validity():

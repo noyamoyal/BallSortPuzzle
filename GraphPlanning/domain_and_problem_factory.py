@@ -81,6 +81,6 @@ def create_problem_file(problem_file_name_, tubes):
 def create_graph_plan_files(tubes, colors):
     domain_file_name = f'ball_sort_puzzle_{len(colors)}_domain.txt'
     problem_file_name = f'ball_sort_puzzle_{len(colors)}_problem.txt'
-    create_domain_file(domain_file_name, colors, len(tubes))
+    # create_domain_file(domain_file_name, colors, len(tubes))
     create_problem_file(problem_file_name, tubes)
     return domain_file_name, problem_file_name
