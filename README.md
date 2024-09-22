@@ -30,14 +30,14 @@ pip install tkinter pillow
 To play manually, run the following command:
 
 ```bash
-python BallSortPuzzle.py -- number_of_colors human
+python BallSortPuzzle.py <number_of_colors> human
 ```
 Use the mouse to move balls between tubes to match all the colors in each tube.
 ### AI Play Mode
 To let the AI solve the puzzle using A* search or graph planning, run:
 
 ```bash
-python BallSortPuzzle.py -- number_of_colors ai search/planning
+python BallSortPuzzle.py <number_of_colors> ai search/planning
 ```
 The AI will solve the puzzle step by step, and you'll see the solution visualized in real-time.
 ## Game Logic
