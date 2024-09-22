@@ -11,7 +11,6 @@ def write_propositions(domain_file, colors, n_tubes):
 
 def write_actions(domain_file, colors, n_tubes):
     domain_file.write(f"Actions:\n")
-    # TODO remove finished from full tube
     create_general_action(colors, domain_file, n_tubes)
     create_full_tube_action(colors, domain_file, n_tubes)
     create_empty_tube_action(domain_file, n_tubes)

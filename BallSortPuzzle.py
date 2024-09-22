@@ -56,14 +56,15 @@ def main():
             steps += cur_steps
         else:
             game.game_runner()
-    if solve_plan:
-        with open("results/summary.txt", 'a') as file:
-            file.write(f"\nfor agent : {solve_plan}\n"
-                       f"with n_colors : {n_colors}\n"
-                       f"num of games : {n_games}\n"
-                       f"average Expanded nodes : %d, average steps : %d\nusing :\n"
-                       f"######\n" % (expands / n_games, steps / n_games))
-
+    # if solve_plan:
+    #
+        # with open("results/summary.txt", 'a') as file:
+        #     file.write(f"\nfor agent : {solve_plan}\n"
+        #                f"with n_colors : {n_colors}\n"
+        #                f"num of games : {n_games}\n"
+        #                f"average Expanded nodes : %d, average steps : %d\nusing :\n"
+        #                f"######\n" % (expands / n_games, steps / n_games))
+        #
 
 def check_input_validity():
     if len(sys.argv) != 3 and len(sys.argv) != 4:
