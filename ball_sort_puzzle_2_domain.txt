@@ -1,0 +1,807 @@
+Propositions:
+red_1_1 red_1_2 red_1_3 red_1_4 red_2_1 red_2_2 red_2_3 red_2_4 red_3_1 red_3_2 red_3_3 red_3_4 green_1_1 green_1_2 green_1_3 green_1_4 green_2_1 green_2_2 green_2_3 green_2_4 green_3_1 green_3_2 green_3_3 green_3_4 1_has_0 1_has_1 1_has_2 1_has_3 1_has_4 2_has_0 2_has_1 2_has_2 2_has_3 2_has_4 3_has_0 3_has_1 3_has_2 3_has_3 3_has_4 1_finished 2_finished 3_finished
+Actions:
+Name: Move_red_from_1_1_to_2_1
+pre: red_1_1 1_has_1 2_has_0
+add: red_2_1 1_has_0 2_has_1
+delete: red_1_1 1_has_1 2_has_0 2_finished
+Name: Move_red_from_1_1_to_2_2
+pre: red_1_1 1_has_1 2_has_1 red_2_1
+add: red_2_2 1_has_0 2_has_2
+delete: red_1_1 1_has_1 2_has_1
+Name: Move_red_from_1_1_to_2_3
+pre: red_1_1 1_has_1 2_has_2 red_2_2
+add: red_2_3 1_has_0 2_has_3
+delete: red_1_1 1_has_1 2_has_2
+Name: Move_red_from_1_1_to_2_4
+pre: red_1_1 1_has_1 2_has_3 red_2_3
+add: red_2_4 1_has_0 2_has_4
+delete: red_1_1 1_has_1 2_has_3
+Name: Move_red_from_1_1_to_3_1
+pre: red_1_1 1_has_1 3_has_0
+add: red_3_1 1_has_0 3_has_1
+delete: red_1_1 1_has_1 3_has_0 3_finished
+Name: Move_red_from_1_1_to_3_2
+pre: red_1_1 1_has_1 3_has_1 red_3_1
+add: red_3_2 1_has_0 3_has_2
+delete: red_1_1 1_has_1 3_has_1
+Name: Move_red_from_1_1_to_3_3
+pre: red_1_1 1_has_1 3_has_2 red_3_2
+add: red_3_3 1_has_0 3_has_3
+delete: red_1_1 1_has_1 3_has_2
+Name: Move_red_from_1_1_to_3_4
+pre: red_1_1 1_has_1 3_has_3 red_3_3
+add: red_3_4 1_has_0 3_has_4
+delete: red_1_1 1_has_1 3_has_3
+Name: Move_red_from_1_2_to_2_1
+pre: red_1_2 1_has_2 2_has_0
+add: red_2_1 1_has_1 2_has_1
+delete: red_1_2 1_has_2 2_has_0 2_finished
+Name: Move_red_from_1_2_to_2_2
+pre: red_1_2 1_has_2 2_has_1 red_2_1
+add: red_2_2 1_has_1 2_has_2
+delete: red_1_2 1_has_2 2_has_1
+Name: Move_red_from_1_2_to_2_3
+pre: red_1_2 1_has_2 2_has_2 red_2_2
+add: red_2_3 1_has_1 2_has_3
+delete: red_1_2 1_has_2 2_has_2
+Name: Move_red_from_1_2_to_2_4
+pre: red_1_2 1_has_2 2_has_3 red_2_3
+add: red_2_4 1_has_1 2_has_4
+delete: red_1_2 1_has_2 2_has_3
+Name: Move_red_from_1_2_to_3_1
+pre: red_1_2 1_has_2 3_has_0
+add: red_3_1 1_has_1 3_has_1
+delete: red_1_2 1_has_2 3_has_0 3_finished
+Name: Move_red_from_1_2_to_3_2
+pre: red_1_2 1_has_2 3_has_1 red_3_1
+add: red_3_2 1_has_1 3_has_2
+delete: red_1_2 1_has_2 3_has_1
+Name: Move_red_from_1_2_to_3_3
+pre: red_1_2 1_has_2 3_has_2 red_3_2
+add: red_3_3 1_has_1 3_has_3
+delete: red_1_2 1_has_2 3_has_2
+Name: Move_red_from_1_2_to_3_4
+pre: red_1_2 1_has_2 3_has_3 red_3_3
+add: red_3_4 1_has_1 3_has_4
+delete: red_1_2 1_has_2 3_has_3
+Name: Move_red_from_1_3_to_2_1
+pre: red_1_3 1_has_3 2_has_0
+add: red_2_1 1_has_2 2_has_1
+delete: red_1_3 1_has_3 2_has_0 2_finished
+Name: Move_red_from_1_3_to_2_2
+pre: red_1_3 1_has_3 2_has_1 red_2_1
+add: red_2_2 1_has_2 2_has_2
+delete: red_1_3 1_has_3 2_has_1
+Name: Move_red_from_1_3_to_2_3
+pre: red_1_3 1_has_3 2_has_2 red_2_2
+add: red_2_3 1_has_2 2_has_3
+delete: red_1_3 1_has_3 2_has_2
+Name: Move_red_from_1_3_to_2_4
+pre: red_1_3 1_has_3 2_has_3 red_2_3
+add: red_2_4 1_has_2 2_has_4
+delete: red_1_3 1_has_3 2_has_3
+Name: Move_red_from_1_3_to_3_1
+pre: red_1_3 1_has_3 3_has_0
+add: red_3_1 1_has_2 3_has_1
+delete: red_1_3 1_has_3 3_has_0 3_finished
+Name: Move_red_from_1_3_to_3_2
+pre: red_1_3 1_has_3 3_has_1 red_3_1
+add: red_3_2 1_has_2 3_has_2
+delete: red_1_3 1_has_3 3_has_1
+Name: Move_red_from_1_3_to_3_3
+pre: red_1_3 1_has_3 3_has_2 red_3_2
+add: red_3_3 1_has_2 3_has_3
+delete: red_1_3 1_has_3 3_has_2
+Name: Move_red_from_1_3_to_3_4
+pre: red_1_3 1_has_3 3_has_3 red_3_3
+add: red_3_4 1_has_2 3_has_4
+delete: red_1_3 1_has_3 3_has_3
+Name: Move_red_from_1_4_to_2_1
+pre: red_1_4 1_has_4 2_has_0
+add: red_2_1 1_has_3 2_has_1
+delete: red_1_4 1_has_4 2_has_0 2_finished
+Name: Move_red_from_1_4_to_2_2
+pre: red_1_4 1_has_4 2_has_1 red_2_1
+add: red_2_2 1_has_3 2_has_2
+delete: red_1_4 1_has_4 2_has_1
+Name: Move_red_from_1_4_to_2_3
+pre: red_1_4 1_has_4 2_has_2 red_2_2
+add: red_2_3 1_has_3 2_has_3
+delete: red_1_4 1_has_4 2_has_2
+Name: Move_red_from_1_4_to_2_4
+pre: red_1_4 1_has_4 2_has_3 red_2_3
+add: red_2_4 1_has_3 2_has_4
+delete: red_1_4 1_has_4 2_has_3
+Name: Move_red_from_1_4_to_3_1
+pre: red_1_4 1_has_4 3_has_0
+add: red_3_1 1_has_3 3_has_1
+delete: red_1_4 1_has_4 3_has_0 3_finished
+Name: Move_red_from_1_4_to_3_2
+pre: red_1_4 1_has_4 3_has_1 red_3_1
+add: red_3_2 1_has_3 3_has_2
+delete: red_1_4 1_has_4 3_has_1
+Name: Move_red_from_1_4_to_3_3
+pre: red_1_4 1_has_4 3_has_2 red_3_2
+add: red_3_3 1_has_3 3_has_3
+delete: red_1_4 1_has_4 3_has_2
+Name: Move_red_from_1_4_to_3_4
+pre: red_1_4 1_has_4 3_has_3 red_3_3
+add: red_3_4 1_has_3 3_has_4
+delete: red_1_4 1_has_4 3_has_3
+Name: Move_red_from_2_1_to_1_1
+pre: red_2_1 2_has_1 1_has_0
+add: red_1_1 2_has_0 1_has_1
+delete: red_2_1 2_has_1 1_has_0 1_finished
+Name: Move_red_from_2_1_to_1_2
+pre: red_2_1 2_has_1 1_has_1 red_1_1
+add: red_1_2 2_has_0 1_has_2
+delete: red_2_1 2_has_1 1_has_1
+Name: Move_red_from_2_1_to_1_3
+pre: red_2_1 2_has_1 1_has_2 red_1_2
+add: red_1_3 2_has_0 1_has_3
+delete: red_2_1 2_has_1 1_has_2
+Name: Move_red_from_2_1_to_1_4
+pre: red_2_1 2_has_1 1_has_3 red_1_3
+add: red_1_4 2_has_0 1_has_4
+delete: red_2_1 2_has_1 1_has_3
+Name: Move_red_from_2_1_to_3_1
+pre: red_2_1 2_has_1 3_has_0
+add: red_3_1 2_has_0 3_has_1
+delete: red_2_1 2_has_1 3_has_0 3_finished
+Name: Move_red_from_2_1_to_3_2
+pre: red_2_1 2_has_1 3_has_1 red_3_1
+add: red_3_2 2_has_0 3_has_2
+delete: red_2_1 2_has_1 3_has_1
+Name: Move_red_from_2_1_to_3_3
+pre: red_2_1 2_has_1 3_has_2 red_3_2
+add: red_3_3 2_has_0 3_has_3
+delete: red_2_1 2_has_1 3_has_2
+Name: Move_red_from_2_1_to_3_4
+pre: red_2_1 2_has_1 3_has_3 red_3_3
+add: red_3_4 2_has_0 3_has_4
+delete: red_2_1 2_has_1 3_has_3
+Name: Move_red_from_2_2_to_1_1
+pre: red_2_2 2_has_2 1_has_0
+add: red_1_1 2_has_1 1_has_1
+delete: red_2_2 2_has_2 1_has_0 1_finished
+Name: Move_red_from_2_2_to_1_2
+pre: red_2_2 2_has_2 1_has_1 red_1_1
+add: red_1_2 2_has_1 1_has_2
+delete: red_2_2 2_has_2 1_has_1
+Name: Move_red_from_2_2_to_1_3
+pre: red_2_2 2_has_2 1_has_2 red_1_2
+add: red_1_3 2_has_1 1_has_3
+delete: red_2_2 2_has_2 1_has_2
+Name: Move_red_from_2_2_to_1_4
+pre: red_2_2 2_has_2 1_has_3 red_1_3
+add: red_1_4 2_has_1 1_has_4
+delete: red_2_2 2_has_2 1_has_3
+Name: Move_red_from_2_2_to_3_1
+pre: red_2_2 2_has_2 3_has_0
+add: red_3_1 2_has_1 3_has_1
+delete: red_2_2 2_has_2 3_has_0 3_finished
+Name: Move_red_from_2_2_to_3_2
+pre: red_2_2 2_has_2 3_has_1 red_3_1
+add: red_3_2 2_has_1 3_has_2
+delete: red_2_2 2_has_2 3_has_1
+Name: Move_red_from_2_2_to_3_3
+pre: red_2_2 2_has_2 3_has_2 red_3_2
+add: red_3_3 2_has_1 3_has_3
+delete: red_2_2 2_has_2 3_has_2
+Name: Move_red_from_2_2_to_3_4
+pre: red_2_2 2_has_2 3_has_3 red_3_3
+add: red_3_4 2_has_1 3_has_4
+delete: red_2_2 2_has_2 3_has_3
+Name: Move_red_from_2_3_to_1_1
+pre: red_2_3 2_has_3 1_has_0
+add: red_1_1 2_has_2 1_has_1
+delete: red_2_3 2_has_3 1_has_0 1_finished
+Name: Move_red_from_2_3_to_1_2
+pre: red_2_3 2_has_3 1_has_1 red_1_1
+add: red_1_2 2_has_2 1_has_2
+delete: red_2_3 2_has_3 1_has_1
+Name: Move_red_from_2_3_to_1_3
+pre: red_2_3 2_has_3 1_has_2 red_1_2
+add: red_1_3 2_has_2 1_has_3
+delete: red_2_3 2_has_3 1_has_2
+Name: Move_red_from_2_3_to_1_4
+pre: red_2_3 2_has_3 1_has_3 red_1_3
+add: red_1_4 2_has_2 1_has_4
+delete: red_2_3 2_has_3 1_has_3
+Name: Move_red_from_2_3_to_3_1
+pre: red_2_3 2_has_3 3_has_0
+add: red_3_1 2_has_2 3_has_1
+delete: red_2_3 2_has_3 3_has_0 3_finished
+Name: Move_red_from_2_3_to_3_2
+pre: red_2_3 2_has_3 3_has_1 red_3_1
+add: red_3_2 2_has_2 3_has_2
+delete: red_2_3 2_has_3 3_has_1
+Name: Move_red_from_2_3_to_3_3
+pre: red_2_3 2_has_3 3_has_2 red_3_2
+add: red_3_3 2_has_2 3_has_3
+delete: red_2_3 2_has_3 3_has_2
+Name: Move_red_from_2_3_to_3_4
+pre: red_2_3 2_has_3 3_has_3 red_3_3
+add: red_3_4 2_has_2 3_has_4
+delete: red_2_3 2_has_3 3_has_3
+Name: Move_red_from_2_4_to_1_1
+pre: red_2_4 2_has_4 1_has_0
+add: red_1_1 2_has_3 1_has_1
+delete: red_2_4 2_has_4 1_has_0 1_finished
+Name: Move_red_from_2_4_to_1_2
+pre: red_2_4 2_has_4 1_has_1 red_1_1
+add: red_1_2 2_has_3 1_has_2
+delete: red_2_4 2_has_4 1_has_1
+Name: Move_red_from_2_4_to_1_3
+pre: red_2_4 2_has_4 1_has_2 red_1_2
+add: red_1_3 2_has_3 1_has_3
+delete: red_2_4 2_has_4 1_has_2
+Name: Move_red_from_2_4_to_1_4
+pre: red_2_4 2_has_4 1_has_3 red_1_3
+add: red_1_4 2_has_3 1_has_4
+delete: red_2_4 2_has_4 1_has_3
+Name: Move_red_from_2_4_to_3_1
+pre: red_2_4 2_has_4 3_has_0
+add: red_3_1 2_has_3 3_has_1
+delete: red_2_4 2_has_4 3_has_0 3_finished
+Name: Move_red_from_2_4_to_3_2
+pre: red_2_4 2_has_4 3_has_1 red_3_1
+add: red_3_2 2_has_3 3_has_2
+delete: red_2_4 2_has_4 3_has_1
+Name: Move_red_from_2_4_to_3_3
+pre: red_2_4 2_has_4 3_has_2 red_3_2
+add: red_3_3 2_has_3 3_has_3
+delete: red_2_4 2_has_4 3_has_2
+Name: Move_red_from_2_4_to_3_4
+pre: red_2_4 2_has_4 3_has_3 red_3_3
+add: red_3_4 2_has_3 3_has_4
+delete: red_2_4 2_has_4 3_has_3
+Name: Move_red_from_3_1_to_1_1
+pre: red_3_1 3_has_1 1_has_0
+add: red_1_1 3_has_0 1_has_1
+delete: red_3_1 3_has_1 1_has_0 1_finished
+Name: Move_red_from_3_1_to_1_2
+pre: red_3_1 3_has_1 1_has_1 red_1_1
+add: red_1_2 3_has_0 1_has_2
+delete: red_3_1 3_has_1 1_has_1
+Name: Move_red_from_3_1_to_1_3
+pre: red_3_1 3_has_1 1_has_2 red_1_2
+add: red_1_3 3_has_0 1_has_3
+delete: red_3_1 3_has_1 1_has_2
+Name: Move_red_from_3_1_to_1_4
+pre: red_3_1 3_has_1 1_has_3 red_1_3
+add: red_1_4 3_has_0 1_has_4
+delete: red_3_1 3_has_1 1_has_3
+Name: Move_red_from_3_1_to_2_1
+pre: red_3_1 3_has_1 2_has_0
+add: red_2_1 3_has_0 2_has_1
+delete: red_3_1 3_has_1 2_has_0 2_finished
+Name: Move_red_from_3_1_to_2_2
+pre: red_3_1 3_has_1 2_has_1 red_2_1
+add: red_2_2 3_has_0 2_has_2
+delete: red_3_1 3_has_1 2_has_1
+Name: Move_red_from_3_1_to_2_3
+pre: red_3_1 3_has_1 2_has_2 red_2_2
+add: red_2_3 3_has_0 2_has_3
+delete: red_3_1 3_has_1 2_has_2
+Name: Move_red_from_3_1_to_2_4
+pre: red_3_1 3_has_1 2_has_3 red_2_3
+add: red_2_4 3_has_0 2_has_4
+delete: red_3_1 3_has_1 2_has_3
+Name: Move_red_from_3_2_to_1_1
+pre: red_3_2 3_has_2 1_has_0
+add: red_1_1 3_has_1 1_has_1
+delete: red_3_2 3_has_2 1_has_0 1_finished
+Name: Move_red_from_3_2_to_1_2
+pre: red_3_2 3_has_2 1_has_1 red_1_1
+add: red_1_2 3_has_1 1_has_2
+delete: red_3_2 3_has_2 1_has_1
+Name: Move_red_from_3_2_to_1_3
+pre: red_3_2 3_has_2 1_has_2 red_1_2
+add: red_1_3 3_has_1 1_has_3
+delete: red_3_2 3_has_2 1_has_2
+Name: Move_red_from_3_2_to_1_4
+pre: red_3_2 3_has_2 1_has_3 red_1_3
+add: red_1_4 3_has_1 1_has_4
+delete: red_3_2 3_has_2 1_has_3
+Name: Move_red_from_3_2_to_2_1
+pre: red_3_2 3_has_2 2_has_0
+add: red_2_1 3_has_1 2_has_1
+delete: red_3_2 3_has_2 2_has_0 2_finished
+Name: Move_red_from_3_2_to_2_2
+pre: red_3_2 3_has_2 2_has_1 red_2_1
+add: red_2_2 3_has_1 2_has_2
+delete: red_3_2 3_has_2 2_has_1
+Name: Move_red_from_3_2_to_2_3
+pre: red_3_2 3_has_2 2_has_2 red_2_2
+add: red_2_3 3_has_1 2_has_3
+delete: red_3_2 3_has_2 2_has_2
+Name: Move_red_from_3_2_to_2_4
+pre: red_3_2 3_has_2 2_has_3 red_2_3
+add: red_2_4 3_has_1 2_has_4
+delete: red_3_2 3_has_2 2_has_3
+Name: Move_red_from_3_3_to_1_1
+pre: red_3_3 3_has_3 1_has_0
+add: red_1_1 3_has_2 1_has_1
+delete: red_3_3 3_has_3 1_has_0 1_finished
+Name: Move_red_from_3_3_to_1_2
+pre: red_3_3 3_has_3 1_has_1 red_1_1
+add: red_1_2 3_has_2 1_has_2
+delete: red_3_3 3_has_3 1_has_1
+Name: Move_red_from_3_3_to_1_3
+pre: red_3_3 3_has_3 1_has_2 red_1_2
+add: red_1_3 3_has_2 1_has_3
+delete: red_3_3 3_has_3 1_has_2
+Name: Move_red_from_3_3_to_1_4
+pre: red_3_3 3_has_3 1_has_3 red_1_3
+add: red_1_4 3_has_2 1_has_4
+delete: red_3_3 3_has_3 1_has_3
+Name: Move_red_from_3_3_to_2_1
+pre: red_3_3 3_has_3 2_has_0
+add: red_2_1 3_has_2 2_has_1
+delete: red_3_3 3_has_3 2_has_0 2_finished
+Name: Move_red_from_3_3_to_2_2
+pre: red_3_3 3_has_3 2_has_1 red_2_1
+add: red_2_2 3_has_2 2_has_2
+delete: red_3_3 3_has_3 2_has_1
+Name: Move_red_from_3_3_to_2_3
+pre: red_3_3 3_has_3 2_has_2 red_2_2
+add: red_2_3 3_has_2 2_has_3
+delete: red_3_3 3_has_3 2_has_2
+Name: Move_red_from_3_3_to_2_4
+pre: red_3_3 3_has_3 2_has_3 red_2_3
+add: red_2_4 3_has_2 2_has_4
+delete: red_3_3 3_has_3 2_has_3
+Name: Move_red_from_3_4_to_1_1
+pre: red_3_4 3_has_4 1_has_0
+add: red_1_1 3_has_3 1_has_1
+delete: red_3_4 3_has_4 1_has_0 1_finished
+Name: Move_red_from_3_4_to_1_2
+pre: red_3_4 3_has_4 1_has_1 red_1_1
+add: red_1_2 3_has_3 1_has_2
+delete: red_3_4 3_has_4 1_has_1
+Name: Move_red_from_3_4_to_1_3
+pre: red_3_4 3_has_4 1_has_2 red_1_2
+add: red_1_3 3_has_3 1_has_3
+delete: red_3_4 3_has_4 1_has_2
+Name: Move_red_from_3_4_to_1_4
+pre: red_3_4 3_has_4 1_has_3 red_1_3
+add: red_1_4 3_has_3 1_has_4
+delete: red_3_4 3_has_4 1_has_3
+Name: Move_red_from_3_4_to_2_1
+pre: red_3_4 3_has_4 2_has_0
+add: red_2_1 3_has_3 2_has_1
+delete: red_3_4 3_has_4 2_has_0 2_finished
+Name: Move_red_from_3_4_to_2_2
+pre: red_3_4 3_has_4 2_has_1 red_2_1
+add: red_2_2 3_has_3 2_has_2
+delete: red_3_4 3_has_4 2_has_1
+Name: Move_red_from_3_4_to_2_3
+pre: red_3_4 3_has_4 2_has_2 red_2_2
+add: red_2_3 3_has_3 2_has_3
+delete: red_3_4 3_has_4 2_has_2
+Name: Move_red_from_3_4_to_2_4
+pre: red_3_4 3_has_4 2_has_3 red_2_3
+add: red_2_4 3_has_3 2_has_4
+delete: red_3_4 3_has_4 2_has_3
+Name: Move_green_from_1_1_to_2_1
+pre: green_1_1 1_has_1 2_has_0
+add: green_2_1 1_has_0 2_has_1
+delete: green_1_1 1_has_1 2_has_0 2_finished
+Name: Move_green_from_1_1_to_2_2
+pre: green_1_1 1_has_1 2_has_1 green_2_1
+add: green_2_2 1_has_0 2_has_2
+delete: green_1_1 1_has_1 2_has_1
+Name: Move_green_from_1_1_to_2_3
+pre: green_1_1 1_has_1 2_has_2 green_2_2
+add: green_2_3 1_has_0 2_has_3
+delete: green_1_1 1_has_1 2_has_2
+Name: Move_green_from_1_1_to_2_4
+pre: green_1_1 1_has_1 2_has_3 green_2_3
+add: green_2_4 1_has_0 2_has_4
+delete: green_1_1 1_has_1 2_has_3
+Name: Move_green_from_1_1_to_3_1
+pre: green_1_1 1_has_1 3_has_0
+add: green_3_1 1_has_0 3_has_1
+delete: green_1_1 1_has_1 3_has_0 3_finished
+Name: Move_green_from_1_1_to_3_2
+pre: green_1_1 1_has_1 3_has_1 green_3_1
+add: green_3_2 1_has_0 3_has_2
+delete: green_1_1 1_has_1 3_has_1
+Name: Move_green_from_1_1_to_3_3
+pre: green_1_1 1_has_1 3_has_2 green_3_2
+add: green_3_3 1_has_0 3_has_3
+delete: green_1_1 1_has_1 3_has_2
+Name: Move_green_from_1_1_to_3_4
+pre: green_1_1 1_has_1 3_has_3 green_3_3
+add: green_3_4 1_has_0 3_has_4
+delete: green_1_1 1_has_1 3_has_3
+Name: Move_green_from_1_2_to_2_1
+pre: green_1_2 1_has_2 2_has_0
+add: green_2_1 1_has_1 2_has_1
+delete: green_1_2 1_has_2 2_has_0 2_finished
+Name: Move_green_from_1_2_to_2_2
+pre: green_1_2 1_has_2 2_has_1 green_2_1
+add: green_2_2 1_has_1 2_has_2
+delete: green_1_2 1_has_2 2_has_1
+Name: Move_green_from_1_2_to_2_3
+pre: green_1_2 1_has_2 2_has_2 green_2_2
+add: green_2_3 1_has_1 2_has_3
+delete: green_1_2 1_has_2 2_has_2
+Name: Move_green_from_1_2_to_2_4
+pre: green_1_2 1_has_2 2_has_3 green_2_3
+add: green_2_4 1_has_1 2_has_4
+delete: green_1_2 1_has_2 2_has_3
+Name: Move_green_from_1_2_to_3_1
+pre: green_1_2 1_has_2 3_has_0
+add: green_3_1 1_has_1 3_has_1
+delete: green_1_2 1_has_2 3_has_0 3_finished
+Name: Move_green_from_1_2_to_3_2
+pre: green_1_2 1_has_2 3_has_1 green_3_1
+add: green_3_2 1_has_1 3_has_2
+delete: green_1_2 1_has_2 3_has_1
+Name: Move_green_from_1_2_to_3_3
+pre: green_1_2 1_has_2 3_has_2 green_3_2
+add: green_3_3 1_has_1 3_has_3
+delete: green_1_2 1_has_2 3_has_2
+Name: Move_green_from_1_2_to_3_4
+pre: green_1_2 1_has_2 3_has_3 green_3_3
+add: green_3_4 1_has_1 3_has_4
+delete: green_1_2 1_has_2 3_has_3
+Name: Move_green_from_1_3_to_2_1
+pre: green_1_3 1_has_3 2_has_0
+add: green_2_1 1_has_2 2_has_1
+delete: green_1_3 1_has_3 2_has_0 2_finished
+Name: Move_green_from_1_3_to_2_2
+pre: green_1_3 1_has_3 2_has_1 green_2_1
+add: green_2_2 1_has_2 2_has_2
+delete: green_1_3 1_has_3 2_has_1
+Name: Move_green_from_1_3_to_2_3
+pre: green_1_3 1_has_3 2_has_2 green_2_2
+add: green_2_3 1_has_2 2_has_3
+delete: green_1_3 1_has_3 2_has_2
+Name: Move_green_from_1_3_to_2_4
+pre: green_1_3 1_has_3 2_has_3 green_2_3
+add: green_2_4 1_has_2 2_has_4
+delete: green_1_3 1_has_3 2_has_3
+Name: Move_green_from_1_3_to_3_1
+pre: green_1_3 1_has_3 3_has_0
+add: green_3_1 1_has_2 3_has_1
+delete: green_1_3 1_has_3 3_has_0 3_finished
+Name: Move_green_from_1_3_to_3_2
+pre: green_1_3 1_has_3 3_has_1 green_3_1
+add: green_3_2 1_has_2 3_has_2
+delete: green_1_3 1_has_3 3_has_1
+Name: Move_green_from_1_3_to_3_3
+pre: green_1_3 1_has_3 3_has_2 green_3_2
+add: green_3_3 1_has_2 3_has_3
+delete: green_1_3 1_has_3 3_has_2
+Name: Move_green_from_1_3_to_3_4
+pre: green_1_3 1_has_3 3_has_3 green_3_3
+add: green_3_4 1_has_2 3_has_4
+delete: green_1_3 1_has_3 3_has_3
+Name: Move_green_from_1_4_to_2_1
+pre: green_1_4 1_has_4 2_has_0
+add: green_2_1 1_has_3 2_has_1
+delete: green_1_4 1_has_4 2_has_0 2_finished
+Name: Move_green_from_1_4_to_2_2
+pre: green_1_4 1_has_4 2_has_1 green_2_1
+add: green_2_2 1_has_3 2_has_2
+delete: green_1_4 1_has_4 2_has_1
+Name: Move_green_from_1_4_to_2_3
+pre: green_1_4 1_has_4 2_has_2 green_2_2
+add: green_2_3 1_has_3 2_has_3
+delete: green_1_4 1_has_4 2_has_2
+Name: Move_green_from_1_4_to_2_4
+pre: green_1_4 1_has_4 2_has_3 green_2_3
+add: green_2_4 1_has_3 2_has_4
+delete: green_1_4 1_has_4 2_has_3
+Name: Move_green_from_1_4_to_3_1
+pre: green_1_4 1_has_4 3_has_0
+add: green_3_1 1_has_3 3_has_1
+delete: green_1_4 1_has_4 3_has_0 3_finished
+Name: Move_green_from_1_4_to_3_2
+pre: green_1_4 1_has_4 3_has_1 green_3_1
+add: green_3_2 1_has_3 3_has_2
+delete: green_1_4 1_has_4 3_has_1
+Name: Move_green_from_1_4_to_3_3
+pre: green_1_4 1_has_4 3_has_2 green_3_2
+add: green_3_3 1_has_3 3_has_3
+delete: green_1_4 1_has_4 3_has_2
+Name: Move_green_from_1_4_to_3_4
+pre: green_1_4 1_has_4 3_has_3 green_3_3
+add: green_3_4 1_has_3 3_has_4
+delete: green_1_4 1_has_4 3_has_3
+Name: Move_green_from_2_1_to_1_1
+pre: green_2_1 2_has_1 1_has_0
+add: green_1_1 2_has_0 1_has_1
+delete: green_2_1 2_has_1 1_has_0 1_finished
+Name: Move_green_from_2_1_to_1_2
+pre: green_2_1 2_has_1 1_has_1 green_1_1
+add: green_1_2 2_has_0 1_has_2
+delete: green_2_1 2_has_1 1_has_1
+Name: Move_green_from_2_1_to_1_3
+pre: green_2_1 2_has_1 1_has_2 green_1_2
+add: green_1_3 2_has_0 1_has_3
+delete: green_2_1 2_has_1 1_has_2
+Name: Move_green_from_2_1_to_1_4
+pre: green_2_1 2_has_1 1_has_3 green_1_3
+add: green_1_4 2_has_0 1_has_4
+delete: green_2_1 2_has_1 1_has_3
+Name: Move_green_from_2_1_to_3_1
+pre: green_2_1 2_has_1 3_has_0
+add: green_3_1 2_has_0 3_has_1
+delete: green_2_1 2_has_1 3_has_0 3_finished
+Name: Move_green_from_2_1_to_3_2
+pre: green_2_1 2_has_1 3_has_1 green_3_1
+add: green_3_2 2_has_0 3_has_2
+delete: green_2_1 2_has_1 3_has_1
+Name: Move_green_from_2_1_to_3_3
+pre: green_2_1 2_has_1 3_has_2 green_3_2
+add: green_3_3 2_has_0 3_has_3
+delete: green_2_1 2_has_1 3_has_2
+Name: Move_green_from_2_1_to_3_4
+pre: green_2_1 2_has_1 3_has_3 green_3_3
+add: green_3_4 2_has_0 3_has_4
+delete: green_2_1 2_has_1 3_has_3
+Name: Move_green_from_2_2_to_1_1
+pre: green_2_2 2_has_2 1_has_0
+add: green_1_1 2_has_1 1_has_1
+delete: green_2_2 2_has_2 1_has_0 1_finished
+Name: Move_green_from_2_2_to_1_2
+pre: green_2_2 2_has_2 1_has_1 green_1_1
+add: green_1_2 2_has_1 1_has_2
+delete: green_2_2 2_has_2 1_has_1
+Name: Move_green_from_2_2_to_1_3
+pre: green_2_2 2_has_2 1_has_2 green_1_2
+add: green_1_3 2_has_1 1_has_3
+delete: green_2_2 2_has_2 1_has_2
+Name: Move_green_from_2_2_to_1_4
+pre: green_2_2 2_has_2 1_has_3 green_1_3
+add: green_1_4 2_has_1 1_has_4
+delete: green_2_2 2_has_2 1_has_3
+Name: Move_green_from_2_2_to_3_1
+pre: green_2_2 2_has_2 3_has_0
+add: green_3_1 2_has_1 3_has_1
+delete: green_2_2 2_has_2 3_has_0 3_finished
+Name: Move_green_from_2_2_to_3_2
+pre: green_2_2 2_has_2 3_has_1 green_3_1
+add: green_3_2 2_has_1 3_has_2
+delete: green_2_2 2_has_2 3_has_1
+Name: Move_green_from_2_2_to_3_3
+pre: green_2_2 2_has_2 3_has_2 green_3_2
+add: green_3_3 2_has_1 3_has_3
+delete: green_2_2 2_has_2 3_has_2
+Name: Move_green_from_2_2_to_3_4
+pre: green_2_2 2_has_2 3_has_3 green_3_3
+add: green_3_4 2_has_1 3_has_4
+delete: green_2_2 2_has_2 3_has_3
+Name: Move_green_from_2_3_to_1_1
+pre: green_2_3 2_has_3 1_has_0
+add: green_1_1 2_has_2 1_has_1
+delete: green_2_3 2_has_3 1_has_0 1_finished
+Name: Move_green_from_2_3_to_1_2
+pre: green_2_3 2_has_3 1_has_1 green_1_1
+add: green_1_2 2_has_2 1_has_2
+delete: green_2_3 2_has_3 1_has_1
+Name: Move_green_from_2_3_to_1_3
+pre: green_2_3 2_has_3 1_has_2 green_1_2
+add: green_1_3 2_has_2 1_has_3
+delete: green_2_3 2_has_3 1_has_2
+Name: Move_green_from_2_3_to_1_4
+pre: green_2_3 2_has_3 1_has_3 green_1_3
+add: green_1_4 2_has_2 1_has_4
+delete: green_2_3 2_has_3 1_has_3
+Name: Move_green_from_2_3_to_3_1
+pre: green_2_3 2_has_3 3_has_0
+add: green_3_1 2_has_2 3_has_1
+delete: green_2_3 2_has_3 3_has_0 3_finished
+Name: Move_green_from_2_3_to_3_2
+pre: green_2_3 2_has_3 3_has_1 green_3_1
+add: green_3_2 2_has_2 3_has_2
+delete: green_2_3 2_has_3 3_has_1
+Name: Move_green_from_2_3_to_3_3
+pre: green_2_3 2_has_3 3_has_2 green_3_2
+add: green_3_3 2_has_2 3_has_3
+delete: green_2_3 2_has_3 3_has_2
+Name: Move_green_from_2_3_to_3_4
+pre: green_2_3 2_has_3 3_has_3 green_3_3
+add: green_3_4 2_has_2 3_has_4
+delete: green_2_3 2_has_3 3_has_3
+Name: Move_green_from_2_4_to_1_1
+pre: green_2_4 2_has_4 1_has_0
+add: green_1_1 2_has_3 1_has_1
+delete: green_2_4 2_has_4 1_has_0 1_finished
+Name: Move_green_from_2_4_to_1_2
+pre: green_2_4 2_has_4 1_has_1 green_1_1
+add: green_1_2 2_has_3 1_has_2
+delete: green_2_4 2_has_4 1_has_1
+Name: Move_green_from_2_4_to_1_3
+pre: green_2_4 2_has_4 1_has_2 green_1_2
+add: green_1_3 2_has_3 1_has_3
+delete: green_2_4 2_has_4 1_has_2
+Name: Move_green_from_2_4_to_1_4
+pre: green_2_4 2_has_4 1_has_3 green_1_3
+add: green_1_4 2_has_3 1_has_4
+delete: green_2_4 2_has_4 1_has_3
+Name: Move_green_from_2_4_to_3_1
+pre: green_2_4 2_has_4 3_has_0
+add: green_3_1 2_has_3 3_has_1
+delete: green_2_4 2_has_4 3_has_0 3_finished
+Name: Move_green_from_2_4_to_3_2
+pre: green_2_4 2_has_4 3_has_1 green_3_1
+add: green_3_2 2_has_3 3_has_2
+delete: green_2_4 2_has_4 3_has_1
+Name: Move_green_from_2_4_to_3_3
+pre: green_2_4 2_has_4 3_has_2 green_3_2
+add: green_3_3 2_has_3 3_has_3
+delete: green_2_4 2_has_4 3_has_2
+Name: Move_green_from_2_4_to_3_4
+pre: green_2_4 2_has_4 3_has_3 green_3_3
+add: green_3_4 2_has_3 3_has_4
+delete: green_2_4 2_has_4 3_has_3
+Name: Move_green_from_3_1_to_1_1
+pre: green_3_1 3_has_1 1_has_0
+add: green_1_1 3_has_0 1_has_1
+delete: green_3_1 3_has_1 1_has_0 1_finished
+Name: Move_green_from_3_1_to_1_2
+pre: green_3_1 3_has_1 1_has_1 green_1_1
+add: green_1_2 3_has_0 1_has_2
+delete: green_3_1 3_has_1 1_has_1
+Name: Move_green_from_3_1_to_1_3
+pre: green_3_1 3_has_1 1_has_2 green_1_2
+add: green_1_3 3_has_0 1_has_3
+delete: green_3_1 3_has_1 1_has_2
+Name: Move_green_from_3_1_to_1_4
+pre: green_3_1 3_has_1 1_has_3 green_1_3
+add: green_1_4 3_has_0 1_has_4
+delete: green_3_1 3_has_1 1_has_3
+Name: Move_green_from_3_1_to_2_1
+pre: green_3_1 3_has_1 2_has_0
+add: green_2_1 3_has_0 2_has_1
+delete: green_3_1 3_has_1 2_has_0 2_finished
+Name: Move_green_from_3_1_to_2_2
+pre: green_3_1 3_has_1 2_has_1 green_2_1
+add: green_2_2 3_has_0 2_has_2
+delete: green_3_1 3_has_1 2_has_1
+Name: Move_green_from_3_1_to_2_3
+pre: green_3_1 3_has_1 2_has_2 green_2_2
+add: green_2_3 3_has_0 2_has_3
+delete: green_3_1 3_has_1 2_has_2
+Name: Move_green_from_3_1_to_2_4
+pre: green_3_1 3_has_1 2_has_3 green_2_3
+add: green_2_4 3_has_0 2_has_4
+delete: green_3_1 3_has_1 2_has_3
+Name: Move_green_from_3_2_to_1_1
+pre: green_3_2 3_has_2 1_has_0
+add: green_1_1 3_has_1 1_has_1
+delete: green_3_2 3_has_2 1_has_0 1_finished
+Name: Move_green_from_3_2_to_1_2
+pre: green_3_2 3_has_2 1_has_1 green_1_1
+add: green_1_2 3_has_1 1_has_2
+delete: green_3_2 3_has_2 1_has_1
+Name: Move_green_from_3_2_to_1_3
+pre: green_3_2 3_has_2 1_has_2 green_1_2
+add: green_1_3 3_has_1 1_has_3
+delete: green_3_2 3_has_2 1_has_2
+Name: Move_green_from_3_2_to_1_4
+pre: green_3_2 3_has_2 1_has_3 green_1_3
+add: green_1_4 3_has_1 1_has_4
+delete: green_3_2 3_has_2 1_has_3
+Name: Move_green_from_3_2_to_2_1
+pre: green_3_2 3_has_2 2_has_0
+add: green_2_1 3_has_1 2_has_1
+delete: green_3_2 3_has_2 2_has_0 2_finished
+Name: Move_green_from_3_2_to_2_2
+pre: green_3_2 3_has_2 2_has_1 green_2_1
+add: green_2_2 3_has_1 2_has_2
+delete: green_3_2 3_has_2 2_has_1
+Name: Move_green_from_3_2_to_2_3
+pre: green_3_2 3_has_2 2_has_2 green_2_2
+add: green_2_3 3_has_1 2_has_3
+delete: green_3_2 3_has_2 2_has_2
+Name: Move_green_from_3_2_to_2_4
+pre: green_3_2 3_has_2 2_has_3 green_2_3
+add: green_2_4 3_has_1 2_has_4
+delete: green_3_2 3_has_2 2_has_3
+Name: Move_green_from_3_3_to_1_1
+pre: green_3_3 3_has_3 1_has_0
+add: green_1_1 3_has_2 1_has_1
+delete: green_3_3 3_has_3 1_has_0 1_finished
+Name: Move_green_from_3_3_to_1_2
+pre: green_3_3 3_has_3 1_has_1 green_1_1
+add: green_1_2 3_has_2 1_has_2
+delete: green_3_3 3_has_3 1_has_1
+Name: Move_green_from_3_3_to_1_3
+pre: green_3_3 3_has_3 1_has_2 green_1_2
+add: green_1_3 3_has_2 1_has_3
+delete: green_3_3 3_has_3 1_has_2
+Name: Move_green_from_3_3_to_1_4
+pre: green_3_3 3_has_3 1_has_3 green_1_3
+add: green_1_4 3_has_2 1_has_4
+delete: green_3_3 3_has_3 1_has_3
+Name: Move_green_from_3_3_to_2_1
+pre: green_3_3 3_has_3 2_has_0
+add: green_2_1 3_has_2 2_has_1
+delete: green_3_3 3_has_3 2_has_0 2_finished
+Name: Move_green_from_3_3_to_2_2
+pre: green_3_3 3_has_3 2_has_1 green_2_1
+add: green_2_2 3_has_2 2_has_2
+delete: green_3_3 3_has_3 2_has_1
+Name: Move_green_from_3_3_to_2_3
+pre: green_3_3 3_has_3 2_has_2 green_2_2
+add: green_2_3 3_has_2 2_has_3
+delete: green_3_3 3_has_3 2_has_2
+Name: Move_green_from_3_3_to_2_4
+pre: green_3_3 3_has_3 2_has_3 green_2_3
+add: green_2_4 3_has_2 2_has_4
+delete: green_3_3 3_has_3 2_has_3
+Name: Move_green_from_3_4_to_1_1
+pre: green_3_4 3_has_4 1_has_0
+add: green_1_1 3_has_3 1_has_1
+delete: green_3_4 3_has_4 1_has_0 1_finished
+Name: Move_green_from_3_4_to_1_2
+pre: green_3_4 3_has_4 1_has_1 green_1_1
+add: green_1_2 3_has_3 1_has_2
+delete: green_3_4 3_has_4 1_has_1
+Name: Move_green_from_3_4_to_1_3
+pre: green_3_4 3_has_4 1_has_2 green_1_2
+add: green_1_3 3_has_3 1_has_3
+delete: green_3_4 3_has_4 1_has_2
+Name: Move_green_from_3_4_to_1_4
+pre: green_3_4 3_has_4 1_has_3 green_1_3
+add: green_1_4 3_has_3 1_has_4
+delete: green_3_4 3_has_4 1_has_3
+Name: Move_green_from_3_4_to_2_1
+pre: green_3_4 3_has_4 2_has_0
+add: green_2_1 3_has_3 2_has_1
+delete: green_3_4 3_has_4 2_has_0 2_finished
+Name: Move_green_from_3_4_to_2_2
+pre: green_3_4 3_has_4 2_has_1 green_2_1
+add: green_2_2 3_has_3 2_has_2
+delete: green_3_4 3_has_4 2_has_1
+Name: Move_green_from_3_4_to_2_3
+pre: green_3_4 3_has_4 2_has_2 green_2_2
+add: green_2_3 3_has_3 2_has_3
+delete: green_3_4 3_has_4 2_has_2
+Name: Move_green_from_3_4_to_2_4
+pre: green_3_4 3_has_4 2_has_3 green_2_3
+add: green_2_4 3_has_3 2_has_4
+delete: green_3_4 3_has_4 2_has_3
+Name: 1_finished_with_red
+pre: red_1_1 red_1_2 red_1_3 red_1_4
+add: 1_finished
+delete: 
+Name: 2_finished_with_red
+pre: red_2_1 red_2_2 red_2_3 red_2_4
+add: 2_finished
+delete: 
+Name: 3_finished_with_red
+pre: red_3_1 red_3_2 red_3_3 red_3_4
+add: 3_finished
+delete: 
+Name: 1_finished_with_green
+pre: green_1_1 green_1_2 green_1_3 green_1_4
+add: 1_finished
+delete: 
+Name: 2_finished_with_green
+pre: green_2_1 green_2_2 green_2_3 green_2_4
+add: 2_finished
+delete: 
+Name: 3_finished_with_green
+pre: green_3_1 green_3_2 green_3_3 green_3_4
+add: 3_finished
+delete: 
+Name: 1_finished_with_empty
+pre: 1_has_0
+add: 1_finished
+delete: 
+Name: 2_finished_with_empty
+pre: 2_has_0
+add: 2_finished
+delete: 
+Name: 3_finished_with_empty
+pre: 3_has_0
+add: 3_finished
+delete: 
