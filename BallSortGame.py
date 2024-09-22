@@ -46,7 +46,7 @@ class BallSortGame:
 
             # return problem.expanded, self.steps
             # TODO delete before submitting
-            # with open("results/summary.txt", 'a') as file:
+            # with open("results/summary1.txt", 'a') as file:
             #     file.write(f"\n for agent :{self.agent}\n"
             #                f"with n_colors:{self.n_colors}\n"
             #                f"Expanded nodes: %d, score: %d\n"
