@@ -50,7 +50,7 @@ class BallSortGame:
         Function which choose amount of tubes according to number of ball colors in game.
         :return:
         """
-        if self.n_colors <= 3:
+        if self.n_colors < 3:
             self.n_tubes = self.n_colors + 1
         elif self.n_colors <= 7:
             self.n_tubes = self.n_colors + 2
