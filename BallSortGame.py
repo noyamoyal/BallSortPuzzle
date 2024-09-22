@@ -1,6 +1,5 @@
 import random
 import time
-import heuristic_search
 from functools import partial
 from BallSortProblem import *
 from Tubes import Tubes
