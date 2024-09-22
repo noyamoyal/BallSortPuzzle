@@ -5,8 +5,6 @@ from GraphPlanning.domain_and_problem_factory import create_graph_plan_files
 from GraphPlanning.planning_problem import PlanningProblem, level_sum, max_level
 from GraphPlanning.search import *
 
-# from GraphPlanning.domain_and_problem_factory import *
-# from GraphPlanning.planning_problem import *
 
 HUMAN = "human"
 AI = "AI"

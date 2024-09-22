@@ -1,15 +1,4 @@
 from PriorityQueue import PriorityQueue
-# import heapq
-
-# class QueueNode:
-#
-#     def __init__(self, score, state, path):
-#         self.score = score
-#         self.state = state
-#         self.path = path
-#
-#     def __lt__(self, other):
-#         return self.score < other.score
 
 def a_star_search(problem, heuristic):
     """
@@ -59,30 +48,6 @@ def a_star_search(problem, heuristic):
     path_to_goal.reverse()
     return path_to_goal
 
-    # TODO delete following code
-    # start_state = problem.get_start_state()
-    # frontier = []
-    # heapq.heappush(frontier, QueueNode(0, start_state, []))
-    # visited = set()
-    # while frontier:
-    #     cur_queue_node = heapq.heappop(frontier)
-    #     cur_state = cur_queue_node.state
-    #     cur_path = cur_queue_node.path
-    #     if cur_state in visited:
-    #         continue
-    #     visited.add(cur_state)
-    #
-    # if problem.is_goal_state(cur_state):
-    #     return cur_path
-    #
-    # for successor, action, step_cost in problem.get_successors(cur_state):
-    #     if successor in visited:
-    #         continue
-    #
-    #     new_path = cur_path + [action]
-    #     heapq.heappush(frontier, QueueNode(problem.get_cost_of_actions(new_path) +
-    #                                        heuristic(cur_state, problem), successor, new_path))
-    # return None
 
 
 def heuristic_function(board):
